@@ -1,0 +1,61 @@
+/* Importando a fonte Poppins do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Reset CSS básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  color: #57534e;
+}
+
+/* Removendo estilos padrões de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Removendo estilos padrões de links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Garantindo que elementos de mídia não ultrapassem os contêineres */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Removendo bordas padrão de inputs e botões */
+button, input, textarea, select {
+    font: inherit;
+    /* border: none; */
+    outline: none;
+    background: none;
+}
+
+/* Garantindo botões clicáveis */
+button {
+    cursor: pointer;
+}
+
+/* Reset para tabelas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
