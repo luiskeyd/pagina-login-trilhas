@@ -1,3 +1,58 @@
-body {
+.main-content {
+  background-color: #2135a6;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-form {
   background-color: #FFFFFF;
+  width: 656px;
+  height: 2438px;
+  padding: 64px 0 0 64px;
+  gap: 48px;
+  flex: 1;
+}
+
+.main-imagem {
+  height: 100vh;
+  flex: 1;
+}
+
+.imagens {
+  position: fixed;
+  left: 1100px;
+  top: 100px;
+}
+
+.caba-sentado {
+  width: 500px;
+  height: 500px;
+}
+
+.logos {
+  width: 212.25px;
+  height: 26.49px;
+  top: 711px;
+  left: 880px;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: column;
+  width: 528px;
+  height: 134px;
+  gap: 24px;
+}
+
+.explica-formulario {
+  width: 528px;
+  height: 86px;
+  gap: 8px;
+}
+
+.sair-da-pagina {
+  display: flex;
+  width: 80px;
+  height: 24px;
+  gap: 8px;
 }
