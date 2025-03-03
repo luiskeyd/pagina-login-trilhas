@@ -1,39 +1,39 @@
 .main-content {
   background-color: #2135a6;
   display: flex;
-  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .main-form {
   background-color: #FFFFFF;
-  width: 656px;
-  height: 2438px;
-  padding: 64px 0 0 64px;
-  gap: 48px;
-  flex: 1;
+  width: 60%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
 }
 
 .main-imagem {
-  height: 100vh;
-  flex: 1;
-}
-
-.imagens {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: fixed;
-  left: 1100px;
-  top: 100px;
+  right: 0;
+  top: 0;
+  height: 100vh;
 }
 
 .caba-sentado {
-  width: 500px;
-  height: 500px;
+  max-width: 80%;
+  height: auto;
 }
 
 .logos {
-  width: 212.25px;
-  height: 26.49px;
-  top: 711px;
-  left: 880px;
+  width: 212px;
+  height: auto;
+  margin-top: 20px;
 }
 
 .form-content {
