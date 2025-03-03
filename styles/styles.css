@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+select {
+  color: #292524;
+  width: 528px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #d6d3d1;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  appearance: none;
+  background-image: url(/assets/arrow-down-01.svg);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
 .main-content {
   background-color: #2135a6;
   display: flex;
@@ -7,14 +24,31 @@
 
 .main-form {
   background-color: #FFFFFF;
-  width: 60%;
+  width: 50%;
   height: 100vh;
   overflow-y: auto;
-  padding: 20px;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.form-area {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.explica-formulario {
+  width: 528px;
+  height: 86px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .main-imagem {
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +70,13 @@
   margin-top: 20px;
 }
 
+.sair-da-pagina {
+  display: flex;
+  width: 80px;
+  height: 24px;
+  gap: 8px;
+}
+
 .form-content {
   display: flex;
   flex-direction: column;
@@ -44,15 +85,211 @@
   gap: 24px;
 }
 
-.explica-formulario {
-  width: 528px;
-  height: 86px;
+.upload-documents {
+  display: flex;
+  flex-direction: column;
   gap: 8px;
 }
 
-.sair-da-pagina {
+.document-title {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.add-file {
   display: flex;
-  width: 80px;
-  height: 24px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #d6d3d1;
+  border-radius: 8px;
+  padding: 24px 16px 24px 16px;
   gap: 8px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  max-width: 528px;
+  height: 160px;
+  transition: 0.3s;
+}
+
+.add-file:hover {
+  color: #d6d3d1;
+  background-color: #f5f5f5;
+}
+
+.name-input {
+  color: #292524;
+  width: 528px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #d6d3d1;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.name-input:hover {
+  background-color: #f5f5f5;
+}
+
+.name-input-pequeno {
+  width: 176px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #d6d3d1;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.name-input-pequeno:hover {
+  color: #292524;
+  background-color: #f5f5f5;
+}
+
+.name-input-cinza {
+  color: #292524;
+  background-color: #f5f5f5;
+  width: 332px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.name-input-cinza-pequeno {
+  color: #292524;
+  background-color: #f5f5f5;
+  width: 176px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.participant-informations {
+  width: 528px;
+  height: 832px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.endereco-residencial {
+  width: 528px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.endereco-junto {
+  width: 528px;
+  height: 72px;
+  display: flex;
+  gap: 20px;
+}
+
+.trilhas {
+  width: 528px;
+  height: 472px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.trilhas-apresentacao {
+  width: 528px;
+  height: 428px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trilhas-apresentacao-opcoes {
+  width: 528px;
+  height: 392px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.trilha-escolhida {
+  width: 256px;
+  height: 120px;
+  border-radius: 8px;
+  border: 1px solid #d6d3d1;
+  padding: 32px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.icon-box {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.nome-trilha {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #d6d3d1;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #f3541c;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #f3541c;
+  cursor: pointer;
+  background-image: url(/assets/check.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.trilha-escolhida-clicada {
+  width: 256px;
+  height: 120px;
+  border-radius: 8px;
+  border: 1px solid #f3541c;
+  padding: 32px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
 }

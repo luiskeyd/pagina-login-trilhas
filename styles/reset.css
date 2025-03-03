@@ -21,6 +21,8 @@ body {
 
 p {
   color: #57534e;
+  font-size: 14px;
+  line-height: 19.6px;
 }
 
 /* Removendo estilos padrões de listas */
@@ -43,8 +45,7 @@ img, video {
 
 /* Removendo bordas padrão de inputs e botões */
 button, input, textarea, select {
-    font: inherit;
-    /* border: none; */
+    font: 'poppins';
     outline: none;
     background: none;
 }

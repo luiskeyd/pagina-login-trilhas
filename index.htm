@@ -37,17 +37,20 @@
           </div>
           <div class="participant-birth">
             <p>Data de nascimento</p>
-            <input class="name-input" type="date" maxlength="800">
+            <input class="name-input" type="date">
           </div>
           <div class="participant-id">
             <p>CPF</p>
-            <input class="name-input" type="text" maxlength="800">
+            <input class="name-input" type="text" placeholder="XXX.XXX.XXX-XX">
           </div>
           <div class="participant-gender">
             <p>Sexo</p>
             <div class="gender-options">
-              <img src="./assets/arrow-down-01.svg" alt="arrow-down">
-              <input class="name-input input-img" type="text" maxlength="800">
+              <select name="sexo" id="sexo">
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+                <option value="outro">Outro</option>
+              </select>
             </div>
           </div>
           <div class="participant-email">
@@ -56,11 +59,11 @@
           </div>
           <div class="participant-phone">
             <p>Telefone</p>
-            <input class="name-input" type="text" maxlength="800">
+            <input class="name-input" type="tel" placeholder="(00) 00000-0000" maxlength="11">
           </div>
 
-          <div class="documents">
-            <p>Documento de Identidade</p>
+          <div class="upload-documents">
+            <p class="document-title">Documento de Identidade</p>
             <div class="add-file">
               <img src="./assets/cloud-upload.svg" alt="nuvem-upload" width="48" height="48">
               <div class="text-document">
@@ -68,39 +71,86 @@
               </div>
             </div>
           </div>
+        </div>  
 
-          <div class="endereco-residencial">
-            <div class="text">
-              <h3>Endereço residencial</h3>
-            </div>
-            <div class="cep-participante">
-              <p>CEP</p>
-              <input class="name-input" type="text" maxlength="800">
-            </div>
+        <div class="endereco-residencial">
+          <div class="text">
+            <h3>Endereço residencial</h3>
+          </div>
+          <div class="cep-participante">
+            <p>CEP</p>
+            <input class="name-input" type="text" maxlength="8" placeholder="00000-000">
+          </div>
+          <div class="endereco-junto">
             <div class="rua-participante">
               <p>Rua</p>
-              <input class="name-input" type="text" maxlength="800">
+              <input class="name-input-cinza" type="text" maxlength="800">
             </div>
             <div class="casa-participante">
               <p>Número</p>
-              <input class="name-input" type="text" maxlength="800">
+              <input class="name-input-pequeno" type="text" maxlength="2">
             </div>
+          </div>
+          <div class="endereco-junto">
             <div class="cidade-participante">
               <p>Cidade</p>
-              <input class="name-input" type="text" maxlength="800">
+              <input class="name-input-cinza" type="text" maxlength="800">
             </div>
             <div class="estado-participante">
               <p>Estado</p>
-              <input class="name-input" type="text" maxlength="800">
+              <input class="name-input-cinza-pequeno" type="text">
             </div>
           </div>
 
-          <div class="comprovante-residencia">
-            <p>Comprovante de residência</p>
+          <div class="upload-documents">
+            <p class="document-title">Comprovante de residência</p>
             <div class="add-file">
               <img src="./assets/cloud-upload.svg" alt="nuvem-upload" width="48" height="48">
               <div class="text-document">
                 <p>Clique aqui para selecionar o arquivo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="trilhas">
+          <h3>Trilhas de aprendizagem</h3>
+          <div class="trilhas-apresentacao">
+            <p>Selecione apenas uma trilha</p>
+            <div class="trilhas-apresentacao-opcoes">
+              <div class="trilha-escolhida-clicada" id="front-end">
+                <input type="checkbox" class="checkbox">
+                <div class="icon-box">
+                  <img src="./assets/icon-front.svg" alt="ícone front" class="icon">
+                </div>
+                <span class="nome-trilha">Programação Front-end</span>
+              </div>
+              <div class="trilha-escolhida" id="back-end">
+                <input type="checkbox">
+                <div class="icon-box">
+                  <img src="./assets/icon-back.svg" alt="ícone front" class="icon">
+                </div>
+                <span class="nome-trilha">Programação Back-end</span>
+              </div>
+              <div class="trilha-escolhida" id="jogos">
+                <input type="checkbox">
+                <div class="icon-box">
+                  <img src="./assets/icon-jogos.svg" alt="ícone front" class="icon">
+                </div>
+                <span class="nome-trilha">Programação de Jogos</span>
+              </div>
+              <div class="trilha-escolhida" id="design">
+                <input type="checkbox">
+                <div class="icon-box">
+                  <img src="./assets/icon-ux.svg" alt="ícone front" class="icon">
+                </div>
+                <span class="nome-trilha">Design e Experiência</span>
+              </div>
+              <div class="trilha-escolhida" id="dados">
+                <input type="checkbox">
+                <div class="icon-box">
+                  <img src="./assets/icon-dados.svg" alt="ícone front" class="icon">
+                </div>
+                <span class="nome-trilha">Ciência de Dados</span>
               </div>
             </div>
           </div>
