@@ -133,6 +133,48 @@ select {
   background-color: #f5f5f5;
 }
 
+.name-input-laranja {
+  color: #292524;
+  width: 528px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #f3541c;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  box-shadow: 0 0 8px rgba(255, 145, 77, 0.8);
+}
+
+.name-input-errado {
+  color: #292524;
+  width: 528px;
+  height: 48px;
+  border-radius: 8px;
+  border: 2px solid #dc2626;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.participant {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mensagem-erro {
+  width: 528px;
+  height: 20px;
+  display: flex;
+  gap: 8px;
+  text-align: center;
+  align-items: center;
+}
+
+.identificador-erro {
+  color: #dc2626;
+}
+
 .name-input-pequeno {
   width: 176px;
   height: 48px;
@@ -292,4 +334,78 @@ input[type="checkbox"]:checked {
   text-align: center;
   cursor: pointer;
   position: relative;
+}
+
+.termos-condicoes {
+  display: flex;
+  gap: 12px;
+  width: 528px;
+  height: 48px;
+}
+
+.declaracao-termos {
+  width: 492px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.termos {
+  color: #e43a12;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.check {
+  width: 24px;
+  height: 24px;
+  top: 0;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  width: 528px;
+  height: 64px;
+  padding-top: 16px;
+  justify-content: flex-end;
+}
+
+.cancelar {
+  width: 123px;
+  height: 48px;
+  min-width: 120px;
+  border-radius: 8px;
+  border: 1px solid #e43a12;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  gap: 8px;
+  text-align: center;
+  color: #e43a12;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inscricao {
+  width: 169px;
+  height: 48px;
+  min-width: 120px;
+  border-radius: 8px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  gap: 8px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: #e43a12;
+  border: none;
 }

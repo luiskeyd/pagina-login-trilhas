@@ -31,19 +31,19 @@
           <div class="text">
             <h3>Informações do participante</h3>
           </div>
-          <div class="participant-name">
+          <div class="participant">
             <p>Nome completo</p>
-            <input class="name-input" type="text" maxlength="800">
+            <input class="name-input-laranja" type="text" maxlength="800">
           </div>
-          <div class="participant-birth">
+          <div class="participant">
             <p>Data de nascimento</p>
             <input class="name-input" type="date">
           </div>
-          <div class="participant-id">
+          <div class="participant">
             <p>CPF</p>
             <input class="name-input" type="text" placeholder="XXX.XXX.XXX-XX">
           </div>
-          <div class="participant-gender">
+          <div class="participant">
             <p>Sexo</p>
             <div class="gender-options">
               <select name="sexo" id="sexo">
@@ -53,11 +53,15 @@
               </select>
             </div>
           </div>
-          <div class="participant-email">
+          <div class="participant">
             <p>E-mail</p>
-            <input class="name-input" type="text" maxlength="800">
+            <input class="name-input-errado" type="text" maxlength="800">
+            <div class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Insira um e-mail válido</p>
+            </div>
           </div>
-          <div class="participant-phone">
+          <div class="participant">
             <p>Telefone</p>
             <input class="name-input" type="tel" placeholder="(00) 00000-0000" maxlength="11">
           </div>
@@ -77,26 +81,26 @@
           <div class="text">
             <h3>Endereço residencial</h3>
           </div>
-          <div class="cep-participante">
+          <div class="participant">
             <p>CEP</p>
             <input class="name-input" type="text" maxlength="8" placeholder="00000-000">
           </div>
           <div class="endereco-junto">
-            <div class="rua-participante">
+            <div class="participant">
               <p>Rua</p>
               <input class="name-input-cinza" type="text" maxlength="800">
             </div>
-            <div class="casa-participante">
+            <div class="participant">
               <p>Número</p>
               <input class="name-input-pequeno" type="text" maxlength="2">
             </div>
           </div>
           <div class="endereco-junto">
-            <div class="cidade-participante">
+            <div class="participant">
               <p>Cidade</p>
               <input class="name-input-cinza" type="text" maxlength="800">
             </div>
-            <div class="estado-participante">
+            <div class="participant">
               <p>Estado</p>
               <input class="name-input-cinza-pequeno" type="text">
             </div>
@@ -154,6 +158,16 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="termos-condicoes">
+          <div class="check">
+            <img src="./assets/Vector.svg" alt="checkbox" class="check-termos">
+          </div>
+          <p class="declaracao-termos">Declaro que li e concordo com os <span class="termos">Termos e Condições</span> e com a <span class="termos">Política de Privacidade</span>.</p>
+        </div>
+        <div class="buttons">
+          <button class="cancelar">Cancelar</button>
+          <button class="inscricao">Fazer inscrição</button>
         </div>
       </div>
     </div>
