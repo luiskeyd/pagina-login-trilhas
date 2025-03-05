@@ -33,6 +33,15 @@ select {
   gap: 48px;
 }
 
+.form-content {
+  display: flex;
+  flex-direction: column;
+  width: 528px;
+  height: 134px;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
 .form-area {
   display: flex;
   flex-direction: column;
@@ -45,6 +54,13 @@ select {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.data-fill {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  vertical-align: middle;
 }
 
 .main-imagem {
@@ -75,14 +91,6 @@ select {
   width: 80px;
   height: 24px;
   gap: 8px;
-}
-
-.form-content {
-  display: flex;
-  flex-direction: column;
-  width: 528px;
-  height: 134px;
-  gap: 24px;
 }
 
 .upload-documents {
