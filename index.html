@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
           </div>
           <div class="participant">
             <p>Nome completo</p>
-            <input class="name-input-laranja" type="text" maxlength="800">
+            <input class="name-input" type="text" maxlength="800">
           </div>
           <div class="participant">
             <p>Data de nascimento</p>
@@ -47,13 +47,11 @@
           </div>
           <div class="participant">
             <p>Sexo</p>
-            <div class="gender-options">
-              <select name="sexo" id="sexo">
-                <option value="feminino">Feminino</option>
-                <option value="masculino">Masculino</option>
-                <option value="outro">Outro</option>
-              </select>
-            </div>
+            <select name="sexo" id="sexo">
+              <option value="feminino">Feminino</option>
+              <option value="masculino">Masculino</option>
+              <option value="outro">Outro</option>
+            </select>
           </div>
           <div class="participant">
             <p>E-mail</p>
@@ -70,12 +68,11 @@
 
           <div class="upload-documents">
             <p class="document-title">Documento de Identidade</p>
-            <div class="add-file">
+            <label class="add-file">
+              <input type="file" hidden>
               <img src="./assets/cloud-upload.svg" alt="nuvem-upload" width="48" height="48">
-              <div class="text-document">
-                <p>Clique aqui para selecionar o arquivo</p>
-              </div>
-            </div>
+              <p>Clique aqui para selecionar o arquivo</p>
+            </label>
           </div>
         </div>
         <!-- FIM INFORMAÇÕES PESSOAIS -->
@@ -106,18 +103,17 @@
             </div>
             <div class="participant">
               <p>Estado</p>
-              <input class="name-input-cinza-pequeno" type="text" placeholder="MA">
+              <input class="name-input-cinza-pequeno" type="text" placeholder="MA" maxlength="2">
             </div>
           </div>
 
           <div class="upload-documents">
             <p class="document-title">Comprovante de residência</p>
-            <div class="add-file">
+            <label class="add-file">
+              <input type="file" hidden>
               <img src="./assets/cloud-upload.svg" alt="nuvem-upload" width="48" height="48">
-              <div class="text-document">
-                <p>Clique aqui para selecionar o arquivo</p>
-              </div>
-            </div>
+              <p>Clique aqui para selecionar o arquivo</p>
+            </label>
           </div>
         </div>
         <!-- FIM ÁREA ENDEREÇO -->
@@ -136,30 +132,30 @@
                 <span class="nome-trilha">Programação Front-end</span>
               </div>
               <div class="trilha-escolhida" id="back-end">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox">
                 <div class="icon-box">
-                  <img src="./assets/icon-back.svg" alt="ícone front" class="icon">
+                  <img src="./assets/icon-back.svg" alt="ícone back" class="icon">
                 </div>
                 <span class="nome-trilha">Programação Back-end</span>
               </div>
               <div class="trilha-escolhida" id="jogos">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox">
                 <div class="icon-box">
-                  <img src="./assets/icon-jogos.svg" alt="ícone front" class="icon">
+                  <img src="./assets/icon-jogos.svg" alt="ícone jogos" class="icon">
                 </div>
                 <span class="nome-trilha">Programação de Jogos</span>
               </div>
               <div class="trilha-escolhida" id="design">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox">
                 <div class="icon-box">
-                  <img src="./assets/icon-ux.svg" alt="ícone front" class="icon">
+                  <img src="./assets/icon-ux.svg" alt="ícone design" class="icon">
                 </div>
                 <span class="nome-trilha">Design e Experiência</span>
               </div>
               <div class="trilha-escolhida" id="dados">
-                <input type="checkbox">
+                <input type="checkbox" class="checkbox">
                 <div class="icon-box">
-                  <img src="./assets/icon-dados.svg" alt="ícone front" class="icon">
+                  <img src="./assets/icon-dados.svg" alt="ícone dados" class="icon">
                 </div>
                 <span class="nome-trilha">Ciência de Dados</span>
               </div>
@@ -171,9 +167,9 @@
         <!-- ÁREA DOS TERMOS E CONDIÇÕES E BOTÕES DE CONFIRMAÇÃO -->
         <div class="termos-condicoes">
           <div class="check">
-            <img src="./assets/Vector.svg" alt="checkbox" class="check-termos">
+            <input type="checkbox" class="check-termos">
           </div>
-          <p class="declaracao-termos">Declaro que li e concordo com os <span class="termos">Termos e Condições</span> e com a <span class="termos">Política de Privacidade</span>.</p>
+          <p class="declaracao-termos">Declaro que li e concordo com os <a href="#" class="termos">Termos e Condições</a> e com a <a href="#" class="termos">Política de Privacidade</a>.</p>
         </div>
         <div class="buttons">
           <button class="cancelar">Cancelar</button>

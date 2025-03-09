@@ -141,7 +141,7 @@ select {
   background-color: #f5f5f5;
 }
 
-.name-input-laranja {
+.name-input:focus {
   color: #292524;
   width: 528px;
   height: 48px;
@@ -298,7 +298,7 @@ select {
   line-height: 24px;
 }
 
-input[type="checkbox"] {
+.checkbox {
   position: absolute;
   top: 0;
   left: 0;
@@ -311,7 +311,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-input[type="checkbox"]:checked {
+.checkbox:checked {
   background-color: #f3541c;
   position: absolute;
   top: 0;
@@ -370,6 +370,29 @@ input[type="checkbox"]:checked {
   height: 24px;
   top: 0;
   cursor: pointer;
+}
+
+.check-termos {
+  width: 19px;
+  height: 19px;
+  top: 2.5px;
+  left: 2.5px;
+  appearance: none;
+  border: 2px solid #d6d3d1;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.check-termos:checked {
+  background-color: #dc2626;
+  appearance: none;
+  width: 19px;
+  height: 19px;
+  border: 2px solid #dc2626;
+  cursor: pointer;
+  background-image: url(/assets/check.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .buttons {
