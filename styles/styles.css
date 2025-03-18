@@ -91,6 +91,7 @@ select {
   width: 80px;
   height: 24px;
   gap: 8px;
+  cursor: pointer;
 }
 
 .upload-documents {
