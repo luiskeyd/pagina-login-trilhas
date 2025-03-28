@@ -31,13 +31,38 @@ select {
   display: flex;
   flex-direction: column;
   gap: 48px;
+  position: relative;
+}
+
+.salvar-conteudo {
+  position: sticky;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+  width: 169px;
+  height: 48px;
+  min-width: 120px;
+  border-radius: 8px;
+  padding: 12px 24px 12px 24px;
+  display: flex;
+  gap: 8px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  background-color: #2135a6;
+  border: none;
 }
 
 .form-content {
   display: flex;
   flex-direction: column;
   width: 528px;
-  height: 134px;
+  height: 132px;
   gap: 24px;
   margin-bottom: 24px;
 }
@@ -174,7 +199,7 @@ select {
 .mensagem-erro {
   width: 528px;
   height: 20px;
-  display: flex;
+  display: none;
   gap: 8px;
   text-align: center;
   align-items: center;
@@ -225,10 +250,10 @@ select {
 
 .participant-informations {
   width: 528px;
-  height: 832px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 24px;
 }
 
 .endereco-residencial {
@@ -237,6 +262,7 @@ select {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-top: 24px;
 }
 
 .endereco-junto {
@@ -440,4 +466,31 @@ select {
   line-height: 24px;
   background-color: #e43a12;
   border: none;
+}
+
+@media (max-width: 1200px) {
+  .main-content {
+    flex-direction: column-reverse;
+    height: auto;
+    align-items: center;
+  }
+
+  .main-form {
+    width: 100%;
+    height: auto;
+    padding: 32px;
+  }
+
+  .main-imagem {
+    position: relative;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .caba-sentado {
+    max-width: 60%;
+    height: auto;
+  }
 }

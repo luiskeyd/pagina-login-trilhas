@@ -13,6 +13,8 @@
   <div class="main-content">
     <!-- CONTEÚDO COMPLETO DO FORMULÁRIO -->
     <div class="main-form">
+      <!-- Botão para salvar alterações -->
+      <button id="salvar" class="salvar-conteudo">Salvar</button>
       <!-- APRESENTANDO O FORMULÁRIO -->
       <div class="form-content">
         <div class="sair-da-pagina">
@@ -36,14 +38,26 @@
           <div class="participant">
             <p>Nome completo</p>
             <input class="name-input" type="text" maxlength="800">
+            <span class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Este campo é obrigatório</p>
+            </span>
           </div>
           <div class="participant">
             <p>Data de nascimento</p>
-            <input class="name-input" type="date">
+            <input class="name-input" type="date" id="data-nascimento">
+            <span class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Você precisa preencher este campo</p>
+            </span>
           </div>
           <div class="participant">
             <p>CPF</p>
-            <input class="name-input" type="text" placeholder="XXX.XXX.XXX-XX">
+            <input class="name-input" type="text" placeholder="XXX.XXX.XXX-XX" maxlength="11" />
+            <span class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Este campo é obrigatório</p>
+            </span>
           </div>
           <div class="participant">
             <p>Sexo</p>
@@ -55,16 +69,30 @@
           </div>
           <div class="participant">
             <p>E-mail</p>
-            <input class="name-input-errado" type="text" maxlength="800">
-            <div class="mensagem-erro">
+            <input class="name-input" type="email" maxlength="50">
+            <span class="mensagem-erro">
               <img src="./assets/alert-circle.svg" alt="circulo de erro">
               <p class="identificador-erro">Insira um e-mail válido</p>
-            </div>
+            </span>
           </div>
           <div class="participant">
             <p>Telefone</p>
             <input class="name-input" type="tel" placeholder="(00) 00000-0000" maxlength="11">
+            <span class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Este campo é obrigatório</p>
+            </span>
           </div>
+
+          <div class="participant">
+            <p>Crie um ID e uma senha</p>
+            <input class="name-input" type="text" maxlength="10" id="usuario">
+            <input class="name-input" type="password" maxlength="10" id="senha">
+            <span class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Este campo é obrigatório</p>
+            </span>
+          </div>  
 
           <div class="upload-documents">
             <p class="document-title">Documento de Identidade</p>
@@ -85,6 +113,10 @@
           <div class="participant">
             <p>CEP</p>
             <input class="name-input" type="text" maxlength="8" placeholder="00000-000">
+            <span class="mensagem-erro">
+              <img src="./assets/alert-circle.svg" alt="circulo de erro">
+              <p class="identificador-erro">Este campo é obrigatório</p>
+            </span>
           </div>
           <div class="endereco-junto">
             <div class="participant">
@@ -124,35 +156,35 @@
           <div class="trilhas-apresentacao">
             <p>Selecione apenas uma trilha</p>
             <div class="trilhas-apresentacao-opcoes">
-              <div class="trilha-escolhida-clicada" id="front-end">
+              <div class="trilha-escolhida" id="trilha">
                 <input type="checkbox" class="checkbox">
                 <div class="icon-box">
                   <img src="./assets/icon-front.svg" alt="ícone front" class="icon">
                 </div>
                 <span class="nome-trilha">Programação Front-end</span>
               </div>
-              <div class="trilha-escolhida" id="back-end">
+              <div class="trilha-escolhida" id="trilha">
                 <input type="checkbox" class="checkbox">
                 <div class="icon-box">
                   <img src="./assets/icon-back.svg" alt="ícone back" class="icon">
                 </div>
                 <span class="nome-trilha">Programação Back-end</span>
               </div>
-              <div class="trilha-escolhida" id="jogos">
+              <div class="trilha-escolhida" id="trilha">
                 <input type="checkbox" class="checkbox">
                 <div class="icon-box">
                   <img src="./assets/icon-jogos.svg" alt="ícone jogos" class="icon">
                 </div>
                 <span class="nome-trilha">Programação de Jogos</span>
               </div>
-              <div class="trilha-escolhida" id="design">
+              <div class="trilha-escolhida" id="trilha">
                 <input type="checkbox" class="checkbox">
                 <div class="icon-box">
                   <img src="./assets/icon-ux.svg" alt="ícone design" class="icon">
                 </div>
                 <span class="nome-trilha">Design e Experiência</span>
               </div>
-              <div class="trilha-escolhida" id="dados">
+              <div class="trilha-escolhida" id="trilha">
                 <input type="checkbox" class="checkbox">
                 <div class="icon-box">
                   <img src="./assets/icon-dados.svg" alt="ícone dados" class="icon">
@@ -172,8 +204,8 @@
           <p class="declaracao-termos">Declaro que li e concordo com os <a href="#" class="termos">Termos e Condições</a> e com a <a href="#" class="termos">Política de Privacidade</a>.</p>
         </div>
         <div class="buttons">
-          <button class="cancelar">Cancelar</button>
-          <button class="inscricao">Fazer inscrição</button>
+          <button id="cancelar" class="cancelar">Cancelar</button>
+          <button id="inscrever" class="inscricao">Fazer inscrição</button>
         </div>
         <!-- FIM ÁREA TERMOS -->
       </div>
@@ -187,5 +219,7 @@
     </div>
     <!-- FIM ÁREA IMAGEM -->
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
