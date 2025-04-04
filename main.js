@@ -36,14 +36,15 @@ function verificarTermos() {
 function realizarInscricao() {
   const botaoInscrever = document.getElementById('inscrever');
   const listaInputs = document.querySelectorAll('.name-input');
-  const listaMensagensErro = document.querySelectorAll('.mensagem-erro');
   const inputDataNascimento = document.querySelector('#data-nascimento');
+
+  escolherTrilha();
 
   botaoInscrever.onclick = function () {
     let formularioValido = true;
 
-    listaInputs.forEach((input, index) => {
-      const mensagemErro = listaMensagensErro[index]; // Obtém a mensagem correspondente
+    listaInputs.forEach((input) => {
+      const mensagemErro = input.closest('.participant')?.querySelector('.mensagem-erro'); // Obtém a mensagem correspondente
       console.log(mensagemErro)
 
       if (input.value.trim() === "") {
@@ -52,16 +53,12 @@ function realizarInscricao() {
         }
         formularioValido = false;
       } else {
-        if(input.type === 'email') {
+        if(input.type === 'email' && !verificarEmail(input.value)) {
           console.log("Verificando Email:", input.value);
-          if(!verificarEmail(input.value)) {
-            console.log("Erro de email ativado");
-            if (mensagemErro) {
-              // mensagemErro.style.display = "flex";
-              alert("Insira um email válido");
-              formularioValido = false;
-            }
-          }
+          console.log("Erro de email ativado");
+          // mensagemErro.style.display = "flex";
+          alert("Insira um email válido");
+          formularioValido = false;
         }
         
         if (mensagemErro) {
@@ -100,36 +97,28 @@ function realizarInscricao() {
 function escolherTrilha() {
   const trilhas = document.querySelectorAll('.trilha-escolhida');
 
-  for(let contador = 0; contador < trilhas.length; contador++) {
-    let escolhida = trilhas[contador];
-    
-    // se eu cliquei na trilha
-    escolhida.onclick = function () {
+  trilhas.forEach((escolhida) => {
+    escolhida.addEventListener('click', function () {
       const ativa = escolhida.classList.contains("trilha-escolhida-clicada");
-      
-      // vai verificar se ela está clicada e atribuir a classe quando necessário
-      if(!ativa) {
-        for(let contador2 = 0; contador2 < trilhas.length + 1; contador2++) {
-          escolhida.classList.remove("trilha-escolhida");
-          escolhida.classList.add("trilha-escolhida-clicada");
-          trilhaSelecionada = true;
-          
-          const outraTrilha = trilhas[contador2];
-          
-          if(outraTrilha.classList.contains("trilha-escolhida-clicada")) {
-            outraTrilha.classList.remove("trilha-escolhida-clicada");
-            outraTrilha.classList.add("trilha-escolhida");
-          }
-        }
+
+      // Remove a seleção de todas as trilhas antes de ativar uma nova
+      trilhas.forEach(trilha => {
+        trilha.classList.remove("trilha-escolhida-clicada");
+        trilha.classList.add("trilha-escolhida");
+      });
+
+      // Se a trilha clicada não estava ativa, ativa ela
+      if (!ativa) {
+        escolhida.classList.remove("trilha-escolhida");
+        escolhida.classList.add("trilha-escolhida-clicada");
+        trilhaSelecionada = true;
       } else {
-        escolhida.classList.remove("trilha-escolhida-clicada");
-        escolhida.classList.add("trilha-escolhida");
+        trilhaSelecionada = false; // Nenhuma trilha está marcada
       }
-    }
-  }
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  escolherTrilha();
   realizarInscricao();
 })
