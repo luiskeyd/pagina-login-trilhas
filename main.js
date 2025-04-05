@@ -33,67 +33,6 @@ function verificarTermos() {
   return true;
 }
 
-function realizarInscricao() {
-  const botaoInscrever = document.getElementById('inscrever');
-  const listaInputs = document.querySelectorAll('.name-input');
-  const inputDataNascimento = document.querySelector('#data-nascimento');
-
-  escolherTrilha();
-
-  botaoInscrever.onclick = function () {
-    let formularioValido = true;
-
-    listaInputs.forEach((input) => {
-      const mensagemErro = input.closest('.participant')?.querySelector('.mensagem-erro'); // Obtém a mensagem correspondente
-      console.log(mensagemErro)
-
-      if (input.value.trim() === "") {
-        if (mensagemErro) {
-          mensagemErro.style.display = "flex";
-        }
-        formularioValido = false;
-      } else {
-        if(input.type === 'email' && !verificarEmail(input.value)) {
-          console.log("Verificando Email:", input.value);
-          console.log("Erro de email ativado");
-          // mensagemErro.style.display = "flex";
-          alert("Insira um email válido");
-          formularioValido = false;
-        }
-        
-        if (mensagemErro) {
-          mensagemErro.style.display = "none";
-        }
-      }
-    });
-
-    if(inputDataNascimento) {
-      const idade = calcularIdade(inputDataNascimento.value);
-      if(idade < 16 || idade > 24) {
-        alert("Somente pessoas com idade entre 16 e 24 anos podem se inscrever no Programa Trilhas!");
-        formularioValido = false;
-      }
-    }
-    
-    if (!verificarTermos()) {
-      alert("Você precisa aceitar os Termos e Políticas de Privacidade para prosseguir!");
-      formularioValido = false;
-    }
-
-    if(trilhaSelecionada == false) {
-      alert("Você precisa selecionar uma trilha para prosseguir!");
-      formularioValido = false;
-    }
-
-    console.log(formularioValido);
-
-    if (formularioValido) {
-      alert("Inscrição realizada com sucesso!");
-      window.location.href = "login.html";
-    }
-  }
-}
-
 function escolherTrilha() {
   const trilhas = document.querySelectorAll('.trilha-escolhida');
 
@@ -117,6 +56,90 @@ function escolherTrilha() {
       }
     });
   });
+}
+
+function realizarInscricao() {
+  const botaoInscrever = document.getElementById('inscrever');
+  const listaInputs = document.querySelectorAll('.name-input');
+  const inputDataNascimento = document.querySelector('#data-nascimento');
+  const inputArquivo = document.querySelectorAll('input[type=file]');
+
+  escolherTrilha();
+
+  botaoInscrever.onclick = function () {
+    let formularioValido = true;
+    let arquivoFaltando = false;
+
+    listaInputs.forEach((input) => {
+      const mensagemErro = input.closest('.participant')?.querySelector('.mensagem-erro');
+      // console.log(mensagemErro)
+
+      if (input.value.trim() === "") {
+        if (mensagemErro) {
+          mensagemErro.style.display = "flex";
+          input.classList.add('name-input-errado');
+        }
+        formularioValido = false;
+      } else {
+        if(input.type === 'email' && !verificarEmail(input.value)) {
+          console.log("Verificando Email:", input.value);
+          console.log("Erro de email ativado");
+          alert("Insira um email válido");
+          input.classList.add('name-input-errado');
+          formularioValido = false;
+        } else {
+          input.classList.remove('name-input-errado');
+        }
+        
+        if (mensagemErro) {
+          mensagemErro.style.display = "none";
+        }
+
+        // se não for erro de email e não estiver vazio, ele também remove a classe de erro
+        if (input.value.trim() !== "" && (input.type !== 'email' || verificarEmail(input.value))) {
+          input.classList.remove("name-input-errado");
+        }
+      }
+    });
+
+    if(inputDataNascimento) {
+      const idade = calcularIdade(inputDataNascimento.value);
+      if(idade < 16 || idade > 24) {
+        alert("Somente pessoas com idade entre 16 e 24 anos podem se inscrever no Programa Trilhas!");
+        formularioValido = false;
+      }
+    }
+
+    // pra verificar se o candidato enviou os arquivos
+    inputArquivo.forEach((input) => {
+      if(input.files.length === 0) {
+        arquivoFaltando = true;
+        formularioValido = false;
+      }
+    })
+
+    // essa linha de código só existe para o alert aparecer apenas uma vez no caso do usuário não ter adicionado nenhum dos dois arquivos
+    if(arquivoFaltando) {
+      alert('Documento de Identidade e/ou Comprovante de Residência faltando');
+    }
+    
+    if (!verificarTermos()) {
+      alert("Você precisa aceitar os Termos e Políticas de Privacidade para prosseguir!");
+      formularioValido = false;
+    }
+
+    if(trilhaSelecionada == false) {
+      alert("Você precisa selecionar uma trilha para prosseguir!");
+      formularioValido = false;
+    }
+
+    console.log(formularioValido);
+
+    if (formularioValido) {
+      alert("Inscrição realizada com sucesso!");
+      window.location.href = "login.html";
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
