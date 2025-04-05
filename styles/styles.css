@@ -34,30 +34,6 @@ select {
   position: relative;
 }
 
-.salvar-conteudo {
-  position: sticky;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  z-index: 10;
-  width: 169px;
-  height: 48px;
-  min-width: 120px;
-  border-radius: 8px;
-  padding: 12px 24px 12px 24px;
-  display: flex;
-  gap: 8px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  color: #FFFFFF;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  background-color: #2135a6;
-  border: none;
-}
-
 .form-content {
   display: flex;
   flex-direction: column;

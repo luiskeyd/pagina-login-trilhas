@@ -33,6 +33,33 @@ function verificarTermos() {
   return true;
 }
 
+function verificarEndereco() {
+  document.getElementById("cep").addEventListener("blur", function () {
+    let cep = this.value.replace(/\D/g, "");
+  
+    if (cep.length === 8) {
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data.erro) {
+            if (data.uf !== "MA") {
+              alert('Somente candidatos Maranhenses ou que residem no estado são permitidos');
+              return;
+            }
+            document.getElementById("cidade").value = data.localidade;
+            document.getElementById("estado").value = data.uf;
+          } else {
+            alert("CEP não encontrado.");
+          }
+        })
+        .catch(() => alert("Erro ao buscar CEP."));
+    } else {
+      alert("CEP inválido.");
+    }
+  });
+  
+}
+
 function escolherTrilha() {
   const trilhas = document.querySelectorAll('.trilha-escolhida');
 
@@ -65,6 +92,7 @@ function realizarInscricao() {
   const inputArquivo = document.querySelectorAll('input[type=file]');
 
   escolherTrilha();
+  verificarEndereco();
 
   botaoInscrever.onclick = function () {
     let formularioValido = true;

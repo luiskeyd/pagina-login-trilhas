@@ -13,8 +13,6 @@
   <div class="main-content">
     <!-- CONTEÚDO COMPLETO DO FORMULÁRIO -->
     <div class="main-form">
-      <!-- Botão para salvar alterações -->
-      <button id="salvar" class="salvar-conteudo">Salvar</button>
       <!-- APRESENTANDO O FORMULÁRIO -->
       <div class="form-content">
         <div class="sair-da-pagina">
@@ -112,7 +110,7 @@
           </div>
           <div class="participant">
             <p>CEP</p>
-            <input class="name-input" type="text" maxlength="8" placeholder="00000-000">
+            <input class="name-input" type="text" maxlength="8" placeholder="00000-000" id="cep">
             <span class="mensagem-erro">
               <img src="./assets/alert-circle.svg" alt="circulo de erro">
               <p class="identificador-erro">Este campo é obrigatório</p>
@@ -131,11 +129,11 @@
           <div class="endereco-junto">
             <div class="participant">
               <p>Cidade</p>
-              <input class="name-input-cinza" type="text" maxlength="800" placeholder="São Luis">
+              <input class="name-input-cinza" type="text" maxlength="800" placeholder="São Luis" id="cidade" readonly>
             </div>
             <div class="participant">
               <p>Estado</p>
-              <input class="name-input-cinza-pequeno" type="text" placeholder="MA" maxlength="2">
+              <input class="name-input-cinza-pequeno" type="text" placeholder="MA" maxlength="2" id="estado" readonly>
             </div>
           </div>
 
