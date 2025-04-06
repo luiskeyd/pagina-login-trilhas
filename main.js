@@ -34,7 +34,7 @@ function verificarTermos() {
 }
 
 function verificarEndereco() {
-  document.getElementById("cep").addEventListener("blur", function () {
+  document.getElementById("cep")?.addEventListener("blur", function () {
     let cep = this.value.replace(/\D/g, "");
   
     if (cep.length === 8) {
@@ -90,11 +90,13 @@ function realizarInscricao() {
   const listaInputs = document.querySelectorAll('.name-input');
   const inputDataNascimento = document.querySelector('#data-nascimento');
   const inputArquivo = document.querySelectorAll('input[type=file]');
+  const inputId = document.getElementById('usuario');
+  const inputSenha = document.getElementById('senha');
 
   escolherTrilha();
   verificarEndereco();
 
-  botaoInscrever.onclick = function () {
+  botaoInscrever?.addEventListener("click", function () {
     let formularioValido = true;
     let arquivoFaltando = false;
 
@@ -164,12 +166,50 @@ function realizarInscricao() {
     console.log(formularioValido);
 
     if (formularioValido) {
+      const dadosFormulario = {
+        nome: listaInputs[0]?.value || "",
+        email: listaInputs[3]?.value || "",
+        dataNascimento: inputDataNascimento.value,
+        trilha: document.querySelector('.trilha-escolhida-clicada')?.textContent || "",
+        idUsuario: inputId.value,
+        senhaUsuario: inputSenha.value,
+        userCPF: listaInputs[2].value,
+        userEndereco: listaInputs[7].value,
+      }
+
+      sessionStorage.setItem('dadosInscricao', JSON.stringify(dadosFormulario));
+      
       alert("Inscrição realizada com sucesso!");
       window.location.href = "login.html";
     }
-  }
+  })
+}
+
+function realizarLogin() {
+  const loginBtn = document.getElementById('login-btn');
+
+  loginBtn?.addEventListener("click", function () {
+    const idInserido = document.getElementById('loginId').value;
+    const senhaInserida = document.getElementById('loginSenha').value;
+    
+    const dadosSalvos = JSON.parse(sessionStorage.getItem("dadosInscricao"));
+
+    if (!dadosSalvos) {
+      alert('Nenuhm usuário cadastrado ou sessão expirou');
+      return;
+    }
+
+    if (idInserido === dadosSalvos.idUsuario && senhaInserida === dadosSalvos.senhaUsuario) {
+      alert('Login realizado com sucesso!');
+      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+    } else {
+      alert('ID ou senha incorretos');
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  sessionStorage.clear();
   realizarInscricao();
+  realizarLogin();
 })
