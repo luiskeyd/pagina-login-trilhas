@@ -1,4 +1,37 @@
 let trilhaSelecionada = false;
+let cepCorreto = true;
+
+// função pra mostrar os alerts personalizados
+function mostrarToast(mensagem, tipo = "info") {
+  let cor;
+
+  switch (tipo) {
+    case "sucesso":
+      cor = "#008000";
+      break;
+    case "erro":
+      cor = "#dc2626";
+      break;
+    case "aviso":
+      cor = "#e0a800";
+      break;  
+    default:
+      cor = "#333";
+  }
+
+  Toastify({
+    text: mensagem,
+    duration: 3000,
+    gravity: "top",
+    position: "center",
+    stopOnFocus: true,
+    close: true,
+    style: {
+      background: cor,
+    },
+  }).showToast();
+}
+
 
 function calcularIdade(dataNascimento) {
   const hoje = new Date();
@@ -44,6 +77,13 @@ function verificarTermos() {
   return true;
 }
 
+// vai retirar todas as letras do CPF, se sobrarem 11 números é pq não havia nenhuma letra
+function verificarCPF(cpf) {
+  const cpfLimpo = cpf.replace(/\D/g, '');
+  return /^\d{11}$/.test(cpfLimpo);
+}
+
+// a função verifica se o CEP está correto, se sim ela autopreenche os campos de cidade e estado, se não ela emite o alert
 function verificarEndereco() {
   document.getElementById("cep")?.addEventListener("blur", function () {
     let cep = this.value.replace(/\D/g, "");
@@ -53,22 +93,26 @@ function verificarEndereco() {
         .then((res) => res.json())
         .then((data) => {
           if (!data.erro) {
+            const mensagemErroCep = document.getElementById("cep")?.closest('.participant')?.querySelector('.mensagem-erro');
+            if (mensagemErroCep) mensagemErroCep.style.display = "none";
             if (data.uf !== "MA") {
-              alert('Somente candidatos Maranhenses ou que residem no estado são permitidos');
+              mostrarToast('Somente candidatos Maranhenses ou que residem no estado são permitidos', 'erro');
               return;
             }
             document.getElementById("cidade").value = data.localidade;
             document.getElementById("estado").value = data.uf;
+            cepCorreto = true;
           } else {
-            alert("CEP não encontrado.");
+            mostrarToast("CEP não encontrado.", 'erro');
+            cepCorreto = false;
           }
         })
         .catch(() => alert("Erro ao buscar CEP."));
     } else {
-      alert("CEP inválido.");
+      mostrarToast("CEP inválido.", 'erro');
+      cepCorreto = false;
     }
   });
-  
 }
 
 function escolherTrilha() {
@@ -125,21 +169,33 @@ function realizarInscricao() {
     
         // verificação do email
         if (input.type === 'email' && !verificarEmail(valor)) {
-          alert("Insira um email válido");
+          mostrarToast("Insira um email válido", "aviso");
           if (mensagemErro) mensagemErro.style.display = "flex";
           inputValido = false;
         }
     
         // verificação do nome completo (índice 0)
         if (index === 0 && !verificarNomeCompleto(valor)) {
-          alert("Por favor, insira o nome completo (nome e sobrenome).");
+          mostrarToast("Por favor, insira o nome completo (nome e sobrenome).", "aviso");
           if (mensagemErro) mensagemErro.style.display = "flex";
           inputValido = false;
         }
     
         // verificação do telefone (índice 4)
         if (index === 4 && !verificarTelefone(valor)) {
-          alert("Telefone inválido! Use o formato (99) 99999-9999.");
+          mostrarToast("Telefone inválido! Use o formato (99) 99999-9999.", "aviso");
+          inputValido = false;
+        }
+
+        // verificacão do CPF (índice 2)
+        if (index === 2 && !verificarCPF(valor)) {
+          mostrarToast("CPF inválido! Insira apenas números.", "aviso");
+          if (mensagemErro) mensagemErro.style.display = "flex";
+          inputValido = false;
+        }
+
+        if (index === 7 && cepCorreto == false) {
+          if (mensagemErro) mensagemErro.style.display = "flex";
           inputValido = false;
         }
       }
@@ -156,7 +212,7 @@ function realizarInscricao() {
     if(inputDataNascimento) {
       const idade = calcularIdade(inputDataNascimento.value);
       if(idade < 16 || idade > 24) {
-        alert("Somente pessoas com idade entre 16 e 24 anos podem se inscrever no Programa Trilhas!");
+        mostrarToast("Somente pessoas com idade entre 16 e 24 anos podem se inscrever no Programa Trilhas!", "erro");
         formularioValido = false;
       }
     }
@@ -171,16 +227,17 @@ function realizarInscricao() {
 
     // essa linha de código só existe para o alert aparecer apenas uma vez no caso do usuário não ter adicionado nenhum dos dois arquivos
     if(arquivoFaltando) {
-      alert('Documento de Identidade e/ou Comprovante de Residência faltando');
+      mostrarToast('Documento de Identidade e/ou Comprovante de Residência faltando', "erro");
+      formularioValido = false;
     }
     
     if (!verificarTermos()) {
-      alert("Você precisa aceitar os Termos e Políticas de Privacidade para prosseguir!");
+      mostrarToast("Você precisa aceitar os Termos e Políticas de Privacidade para prosseguir!", "aviso");
       formularioValido = false;
     }
 
     if(trilhaSelecionada == false) {
-      alert("Você precisa selecionar uma trilha para prosseguir!");
+      mostrarToast("Você precisa selecionar uma trilha para prosseguir!", "aviso");
       formularioValido = false;
     }
 
@@ -200,8 +257,12 @@ function realizarInscricao() {
 
       sessionStorage.setItem('dadosInscricao', JSON.stringify(dadosFormulario));
       
-      alert("Inscrição realizada com sucesso!");
-      window.location.href = "login.html";
+      mostrarToast("Inscrição realizada com sucesso!", "sucesso");
+      
+      // o alert de inscrição bem sucedida não conseguia aparecer pq ia instantaneamente pra outra página, tive que atrasar o processo
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 3000);
     }
   })
 }
@@ -216,21 +277,28 @@ function realizarLogin() {
     const dadosSalvos = JSON.parse(sessionStorage.getItem("dadosInscricao"));
 
     if (!dadosSalvos) {
-      alert('Nenuhm usuário cadastrado ou sessão expirou');
+      mostrarToast('Nenhum usuário cadastrado ou sessão expirou', "erro");
       return;
     }
 
     if (idInserido === dadosSalvos.idUsuario && senhaInserida === dadosSalvos.senhaUsuario) {
-      alert('Login realizado com sucesso!');
+      mostrarToast('Login realizado com sucesso!', "sucesso");
       sessionStorage.clear();
       window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
     } else {
-      alert('ID ou senha incorretos');
+      mostrarToast('ID ou senha incorretos', "erro");
     }
   });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  // basicamente remove os dados do sessionStorage se o usuário recarregar a página
+  const navEntries = performance.getEntriesByType("navigation");
+
+  if (navEntries.length > 0 && navEntries[0].type === "reload") {
+    sessionStorage.clear();
+  }
+
   realizarInscricao();
   realizarLogin();
 })
