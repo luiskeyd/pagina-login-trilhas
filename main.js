@@ -16,6 +16,17 @@ function calcularIdade(dataNascimento) {
   return idade;
 }
 
+function verificarNomeCompleto(nome) {
+  // vai verificar se tem pelo menos duas palavras inseridas
+  const partes = nome.trim().split(' ');
+  return partes.length >= 2 && partes.every(parte => parte.length >= 2);
+}
+
+function verificarTelefone(telefone) {
+  const regex = /^\(?\d{2}\)?\s?\d{5}-?\d{4}$/;
+  return regex.test(telefone);
+}
+
 function verificarEmail(email) {
   const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regexEmail.test(email);
@@ -67,19 +78,19 @@ function escolherTrilha() {
     escolhida.addEventListener('click', function () {
       const ativa = escolhida.classList.contains("trilha-escolhida-clicada");
 
-      // Remove a seleção de todas as trilhas antes de ativar uma nova
+      // remove a seleção de todas as trilhas antes de ativar uma nova
       trilhas.forEach(trilha => {
         trilha.classList.remove("trilha-escolhida-clicada");
         trilha.classList.add("trilha-escolhida");
       });
 
-      // Se a trilha clicada não estava ativa, ativa ela
+      // se a trilha clicada não tava ativa, ativa ela
       if (!ativa) {
         escolhida.classList.remove("trilha-escolhida");
         escolhida.classList.add("trilha-escolhida-clicada");
         trilhaSelecionada = true;
       } else {
-        trilhaSelecionada = false; // Nenhuma trilha está marcada
+        trilhaSelecionada = false; // nenhuma trilha tá marcada
       }
     });
   });
@@ -100,35 +111,45 @@ function realizarInscricao() {
     let formularioValido = true;
     let arquivoFaltando = false;
 
-    listaInputs.forEach((input) => {
+    listaInputs.forEach((input, index) => {
       const mensagemErro = input.closest('.participant')?.querySelector('.mensagem-erro');
-      // console.log(mensagemErro)
-
-      if (input.value.trim() === "") {
-        if (mensagemErro) {
-          mensagemErro.style.display = "flex";
-          input.classList.add('name-input-errado');
+      const valor = input.value.trim();
+      let inputValido = true;
+    
+      // verificar campo vazio
+      if (valor === "") {
+        inputValido = false;
+        if (mensagemErro) mensagemErro.style.display = "flex";
+      } else {
+        if (mensagemErro) mensagemErro.style.display = "none";
+    
+        // verificação do email
+        if (input.type === 'email' && !verificarEmail(valor)) {
+          alert("Insira um email válido");
+          if (mensagemErro) mensagemErro.style.display = "flex";
+          inputValido = false;
         }
+    
+        // verificação do nome completo (índice 0)
+        if (index === 0 && !verificarNomeCompleto(valor)) {
+          alert("Por favor, insira o nome completo (nome e sobrenome).");
+          if (mensagemErro) mensagemErro.style.display = "flex";
+          inputValido = false;
+        }
+    
+        // verificação do telefone (índice 4)
+        if (index === 4 && !verificarTelefone(valor)) {
+          alert("Telefone inválido! Use o formato (99) 99999-9999.");
+          inputValido = false;
+        }
+      }
+    
+      // aplica ou remove classe de erro
+      if (!inputValido) {
+        input.classList.add('name-input-errado');
         formularioValido = false;
       } else {
-        if(input.type === 'email' && !verificarEmail(input.value)) {
-          console.log("Verificando Email:", input.value);
-          console.log("Erro de email ativado");
-          alert("Insira um email válido");
-          input.classList.add('name-input-errado');
-          formularioValido = false;
-        } else {
-          input.classList.remove('name-input-errado');
-        }
-        
-        if (mensagemErro) {
-          mensagemErro.style.display = "none";
-        }
-
-        // se não for erro de email e não estiver vazio, ele também remove a classe de erro
-        if (input.value.trim() !== "" && (input.type !== 'email' || verificarEmail(input.value))) {
-          input.classList.remove("name-input-errado");
-        }
+        input.classList.remove('name-input-errado');
       }
     });
 
@@ -201,6 +222,7 @@ function realizarLogin() {
 
     if (idInserido === dadosSalvos.idUsuario && senhaInserida === dadosSalvos.senhaUsuario) {
       alert('Login realizado com sucesso!');
+      sessionStorage.clear();
       window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
     } else {
       alert('ID ou senha incorretos');
@@ -209,7 +231,6 @@ function realizarLogin() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  sessionStorage.clear();
   realizarInscricao();
   realizarLogin();
 })
