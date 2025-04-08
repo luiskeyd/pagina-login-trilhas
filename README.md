@@ -12,7 +12,7 @@ Este projeto visa desenvolver uma página intuitiva de cadastro e login para col
 
 Para testar o programa em seu ambiente local, siga estas etapas:
 
-1.  **Baixe o repositório:** Faça o download do arquivo `.zip` através deste link: [https://github.com/luiskeyd/pagina-login-trilhas.git](https://github.com/luiskeyd/pagina-login-trilhas.git)
+1.  **Baixe o repositório:** Faça o download do arquivo `.zip`.
 2.  **Abra com sua IDE:** Utilize o VS Code ou outra IDE de sua preferência para acessar os arquivos.
 3.  **Execute o `index.html`:** Clique com o botão direito no arquivo `index.html` e selecione a opção para abrir no navegador.
 4.  **Preencha o formulário:** Navegue pelas etapas do cadastro e preencha os dados solicitados.
